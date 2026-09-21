@@ -5,17 +5,17 @@ import FlashMessage from "@/components/flash-message";
 
 type Props = {
     searchParams: Promise<{
+        query?: string;
         message?: string;
     }>;
 };
 
 const Clients = async ({ searchParams }: Props) => {
-    const { message } = await searchParams;
+    const {query, message } = await searchParams;
 
     return (
         <div>
             <div className="max-w-screen-md mx-auto mt-5">
-
                 <FlashMessage message={message} />
 
                 <div className="flex items-center justify-between gap-1 mb-5">
@@ -23,7 +23,7 @@ const Clients = async ({ searchParams }: Props) => {
                     <CreateButton />
                 </div>
 
-                <ClientTable />
+                <ClientTable query={query}/>
             </div>
         </div>
     );

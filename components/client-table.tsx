@@ -1,8 +1,8 @@
 import { getclients } from "@/lib/data";
 import { EditButton, DeleteButton } from "./button";
 
-const ClientTable = async () => {
-  const clients = await getclients();
+const ClientTable = async ({ query }: { query?: string }) => {
+  const clients = await getclients(query);
 
   return (
     <table className="w-full text-sm text-left text-gray-500"> 

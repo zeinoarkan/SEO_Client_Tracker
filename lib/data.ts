@@ -1,8 +1,28 @@
 import { prisma } from "@/lib/prisma";
 
-export const getclients = async () => {
+export const getclients = async (query?: string) => {
     try {
         const clients = await prisma.client.findMany({
+             where: query
+                ? {
+                      OR: [
+                          {
+                              nama_client: {
+                                  contains: query,
+                                  mode: "insensitive",
+                              },
+                          },
+                          {
+                              layanan: {
+                                  nama_layanan: {
+                                      contains: query,
+                                      mode: "insensitive",
+                                  },
+                              },
+                          },
+                      ],
+                  }
+                : undefined,
             include: {
                 layanan: true,
             },
