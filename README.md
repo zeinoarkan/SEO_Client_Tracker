@@ -25,3 +25,28 @@ Foreign key clients.id_layanan yang mengarah ke layanan.id_layanan
 Search/filter client berdasarkan layanan dan nama client
 Flash message setelah proses tambah, ubah, atau hapus.
 
+Cara Menjalankan
+
+1. Clone Repository
+git clone https://github.com/zeinoarkan/SEO_Client_Tracker.git
+cd seo_client_tracker
+2. Install Dependencies
+npm install
+3. Konfigurasi Database
+
+Buat file .env di root project:
+
+DATABASE_URL="postgresql://username:password@localhost:5432/nama_database"
+
+Sesuaikan DATABASE_URL dengan database PostgreSQL yang digunakan.
+
+4. Jalankan Migration
+npx prisma migrate dev
+5. Jalankan Seed
+npx prisma db seed
+6. Jalankan Aplikasi
+npm run dev
+
+Buka:
+
+http://localhost:3000
