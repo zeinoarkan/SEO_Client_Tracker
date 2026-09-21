@@ -8,7 +8,7 @@ const ClientTable = async () => {
     <table className="w-full text-sm text-left text-gray-500"> 
         <thead className="text-sm text-gray-700 uppercase bg-gray-50">
             <tr>
-                <th>#</th>
+                <th>ID</th>
                 <th className="px-6 py-3">Nama Client</th>
                 <th className="px-6 py-3">Website</th>
                 <th className="px-6 py-3">Layanan</th>
@@ -20,15 +20,15 @@ const ClientTable = async () => {
         <tbody>
             {clients.map((client, index) => (
             <tr key={client.id_client} className="bg-white border-b">
-                <td className="px-6 py-3">{index + 1}</td>
+                <td className="px-6 py-3">{client.id_client}</td>
                 <td className="px-6 py-3">{client.nama_client}</td>
                 <td className="px-6 py-3">{client.website_client}</td>
                 <td className="px-6 py-3">{client.layanan.nama_layanan}</td>
                 <td className="px-6 py-3">{client.periode_mulai? new Date(client.periode_mulai).toLocaleDateString("id-ID"): "N/A"}</td>
                 <td className="px-6 py-3">{client.periode_selesai? new Date(client.periode_selesai).toLocaleDateString("id-ID"): "N/A"}</td>
                 <td className="px-6 py-3 flex justify-center gap-2">
-                    <EditButton />
-                    <DeleteButton />
+                    <EditButton id={client.id_client} />
+                    <DeleteButton id={client.id_client} />
                 </td>
             </tr>
                 ))}

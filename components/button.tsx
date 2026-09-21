@@ -1,5 +1,6 @@
+import { deleteClient } from "@/lib/actions"
 import Link from "next/link"
-import {IoAddSharp, IoPencil, IoTrashBin} from "react-icons/io5"
+import {IoAddSharp} from "react-icons/io5"
 
 export const CreateButton = () => {
   return (
@@ -10,20 +11,22 @@ export const CreateButton = () => {
   )
 }
 
-export const EditButton = () => {
-  return (
-    <Link href="/clients/edit" 
-    className="rounded-sm border p-1 hover:bg-green-200">
-      <IoPencil className="size={20}" />
-    </Link>
-  )
-}
+export const EditButton = ({ id }: { id: number }) => {
+    return (
+        <Link href={`/clients/${id}/edit`} className="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600">
+            Edit
+        </Link>
+    );
+};
 
-export const DeleteButton = () => {
-  return (
-    <Link href="/clients/delete" 
-    className="rounded-sm border p-1 hover:bg-red-200">
-      <IoTrashBin className="size={20}" />
-    </Link>
-  )
-}
+export const DeleteButton = ({ id }: { id: number }) => {
+    const deleteClientWithId = deleteClient.bind(null, id);
+
+    return (
+        <form action={deleteClientWithId}>
+            <button type="submit" className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600">
+                Delete
+            </button>
+        </form>
+    );
+};

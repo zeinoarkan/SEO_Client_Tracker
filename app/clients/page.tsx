@@ -1,19 +1,32 @@
 import ClientTable from "@/components/client-table";
 import Search from "@/components/search";
-import {CreateButton} from "@/components/button";
+import { CreateButton } from "@/components/button";
+import FlashMessage from "@/components/flash-message";
 
-const Clients = () => {
-  return (
-    <div>
-        <div className="max-w-screen-md mx-auto mt-5">
-            <div className="flex items-center justify-between gap-1 mb-5">
-                <Search />
-                <CreateButton />
+type Props = {
+    searchParams: Promise<{
+        message?: string;
+    }>;
+};
+
+const Clients = async ({ searchParams }: Props) => {
+    const { message } = await searchParams;
+
+    return (
+        <div>
+            <div className="max-w-screen-md mx-auto mt-5">
+
+                <FlashMessage message={message} />
+
+                <div className="flex items-center justify-between gap-1 mb-5">
+                    <Search />
+                    <CreateButton />
+                </div>
+
+                <ClientTable />
             </div>
-            <ClientTable />
         </div>
-    </div>
-  )
-}
+    );
+};
 
-export default Clients
+export default Clients;

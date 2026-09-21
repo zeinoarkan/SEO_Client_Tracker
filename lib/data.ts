@@ -6,6 +6,9 @@ export const getclients = async () => {
             include: {
                 layanan: true,
             },
+            orderBy: {
+                id_client: "asc",
+            },
         });
         return clients;
     } catch (error) {
@@ -21,5 +24,20 @@ export const getLayanan = async () => {
     } catch (error) {
         console.error("Error fetching layanan:", error);
         throw new Error("Failed to fetch layanan");
+    }
+};
+
+export const getClientById = async (id: number) => {
+    try {
+        const client = await prisma.client.findUnique({
+            where: {
+                id_client: id,
+            },
+        });
+
+        return client;
+    } catch (error) {
+        console.error("Error fetching client:", error);
+        throw new Error("Failed to fetch client");
     }
 };
