@@ -1,30 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+SEO Client Tracker
 
-## Getting Started
+SEO Client Tracker adalah aplikasi web sederhana untuk mengelola data client dan layanan SEO yang digunakan oleh masing-masing client.
 
-First, run the development server:
+Aplikasi ini dibuat menggunakan Next.js dan Prisma dengan database MySQL. Aplikasi menyediakan fitur CRUD untuk data client serta relasi antara tabel layanan dan clients menggunakan foreign key dengan relasi one-to-many.
 
-```bash
-npm run dev
-```
+Tech Stack
+Next.js: 16.3.5
+Node.js: 19.2.8
+Prisma: 6.19.3
+Database: postgresql
+Package Manager: npm
+Database Management: prisma studio
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Fitur
+Menampilkan daftar client
+Menambahkan client baru
+Mengubah data client
+Menghapus data client
+Memilih layanan melalui dropdown dari data tabel layanan
+Validasi field wajib
+Validasi format website
+Relasi one-to-many antara layanan dan clients
+Foreign key clients.id_layanan yang mengarah ke layanan.id_layanan
+Search/filter client berdasarkan layanan dan nama client
+Flash message setelah proses tambah, ubah, atau hapus.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
